@@ -22,3 +22,7 @@ https://github.dev/techiediaries/fake-api-jwt-json-server
 TODO: 
 
 "filtro de tipo user"
+
+https://github.dev/jeremyben/json-server-auth
+
+

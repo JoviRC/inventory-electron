@@ -71,6 +71,7 @@ const Box = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 `;
 const BoxLogOut = styled.div`
     width: 50px;
