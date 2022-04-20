@@ -24,7 +24,6 @@ const Body = styled.div`
 `;
 
 const RouterApp = () => {
-    
     const [token, setToken] = useState(sessionStorage.getItem("token"));
 
     return (

@@ -20,6 +20,5 @@ If you want to test the production build (In case you think Babili might be brea
 https://github.dev/techiediaries/fake-api-jwt-json-server
 
 TODO: 
-logOut
-Register
+
 "filtro de tipo user"
