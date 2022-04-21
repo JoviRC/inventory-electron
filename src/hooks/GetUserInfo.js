@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useState, useEffect} from "react";
+import styled from "styled-components";
 
-const GetUserInfo = () => {
-  return (
-    <div>GetUserInfo</div>
-  )
-}
 
-export default GetUserInfo
+const GetUserInfo = (props) => {
+
+
+    return (
+        <>
+            <div>asd</div>
+        </>
+    );
+};
+
+export default GetUserInfo;

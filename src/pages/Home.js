@@ -1,10 +1,11 @@
 import React from "react";
 import { Container } from "../components/Layouts";
-import Login from "../components/Login";
+import GetUserInfo from "../hooks/GetUserInfo";
 
-const Home = () => {
+const Home = (props) => {
     return (
         <Container>
+            {/* <GetUserInfo {...props} /> */}
         </Container>
     );
 };

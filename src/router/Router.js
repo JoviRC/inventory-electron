@@ -25,6 +25,7 @@ const Body = styled.div`
 
 const RouterApp = () => {
     const [token, setToken] = useState(sessionStorage.getItem("token"));
+    const [currentUser, setCurrentUser] = useState({});
 
     return (
         <MemoryRouter>
@@ -32,13 +33,21 @@ const RouterApp = () => {
                 <FrameBar />
                 <Container>
                     {!token || token.length === 0 ? (
-                        <Login setToken={setToken} />
+                        <Login setToken={setToken} setCurrentUser={setCurrentUser} />
                     ) : (
                         <>
-                            <Nav />
+                            <Nav currentUser={currentUser} />
                             <Switch>
-                                <Route exact path="/" component={Home} />
-                                <Route exact path="/about" component={About} />
+                                <Route
+                                    exact
+                                    path="/"
+                                    component={() => <Home currentUser={currentUser} />}
+                                />
+                                <Route
+                                    exact
+                                    path="/about"
+                                    component={() => <About currentUser={currentUser} />}
+                                />
                             </Switch>
                         </>
                     )}

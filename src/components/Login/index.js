@@ -50,7 +50,7 @@ const Container = styled.div`
     outline: none;
 `;
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, setCurrentUser }) => {
     const [isSubmitted, setSubmitted] = useState(false);
 
     const [email, setEmail] = useState("");
@@ -70,6 +70,7 @@ const Login = ({ setToken }) => {
                 .then((data) => {
                     sessionStorage.setItem("token", data.access_token);
                     setToken(data.access_token);
+                    setCurrentUser(email);
                 })
                 .catch(setToken(""));
         }

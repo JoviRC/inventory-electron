@@ -75,7 +75,7 @@
             "id": 18
         }
     ],
-    "locations": [
+    "providers": [
         {
             "id": 1,
             "name": "Location001"
@@ -103,7 +103,7 @@
             "name": "FM003"
         }
     ],
-    "transactions": [
+    "historial-transactions": [
         {
             "id": 1,
             "cost": 11,
@@ -121,6 +121,97 @@
             "cost": 15,
             "quantity": 101,
             "productId": 3
+        }
+    ],
+    "historial-logins": [
+        {
+            "id": 1,
+            "date": "2019-01-01",
+            "userId": 1
+        },
+        {
+            "id": 2,
+            "date": "2019-01-02",
+            "userId": 2
+        },
+        {
+            "id": 3,
+            "date": "2019-01-03",
+            "userId": 3
+        }
+    ],
+    "roles": [
+        {
+            "products": {
+                "admin": {
+                    "read": true,
+                    "update": true,
+                    "create": true,
+                    "delete": true
+                },
+                "user": {
+                    "read": true,
+                    "update": true,
+                    "create": false,
+                    "delete": false
+                }
+            },
+            "locations": {
+                "admin": {
+                    "read": true,
+                    "update": true,
+                    "create": true,
+                    "delete": true
+                },
+                "user": {
+                    "read": true,
+                    "update": false,
+                    "create": false,
+                    "delete": false
+                }
+            },
+            "historial-transactions": {
+                "admin": {
+                    "read": true,
+                    "update": true,
+                    "create": true,
+                    "delete": true
+                },
+                "user": {
+                    "read": false,
+                    "update": false,
+                    "create": false,
+                    "delete": false
+                }
+            },
+            "historial-logins": {
+                "admin": {
+                    "read": true,
+                    "update": true,
+                    "create": true,
+                    "delete": true
+                },
+                "user": {
+                    "read": false,
+                    "update": false,
+                    "create": false,
+                    "delete": false
+                }
+            },
+            "roles": {
+                "admin": {
+                    "read": true,
+                    "update": true,
+                    "create": true,
+                    "delete": true
+                },
+                "user": {
+                    "read": false,
+                    "update": false,
+                    "create": false,
+                    "delete": false
+                }
+            }
         }
     ]
 }
