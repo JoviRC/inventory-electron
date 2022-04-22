@@ -33,7 +33,7 @@ const RouterApp = () => {
                 <FrameBar />
                 <Container>
                     {!token || token.length === 0 ? (
-                        <Login setToken={setToken} setCurrentUser={setCurrentUser} />
+                        <Login setToken={setToken} />
                     ) : (
                         <>
                             <Nav currentUser={currentUser} />

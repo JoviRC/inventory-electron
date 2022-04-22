@@ -31,6 +31,9 @@ function createWindow() {
         minHeight: 600,
         borderRadius: 20,
         frame: false,
+        webPreferences: {
+            devTools: !app.isPackaged
+            }
     });
 
     // and load the index.html of the app.

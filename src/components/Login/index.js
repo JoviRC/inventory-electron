@@ -50,11 +50,12 @@ const Container = styled.div`
     outline: none;
 `;
 
-const Login = ({ setToken, setCurrentUser }) => {
-    const [isSubmitted, setSubmitted] = useState(false);
-
+const Login = ({ setToken }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isSubmitted, setSubmitted] = useState(false);
+    const [isSusses, setSusses] = useState(false);
+    const [isError, setError] = useState(false);
 
     useEffect(() => {
         if (isSubmitted) {
@@ -64,18 +65,32 @@ const Login = ({ setToken, setCurrentUser }) => {
                 body: JSON.stringify({ email: email, password: password }),
             };
             fetch(_HOST_URL_ + _RESOURCE_LOGIN_, requestOptions)
-                .catch(setToken(""))
+                .catch(setError(true))
                 .then((response) => response.json())
                 .catch(setToken(""))
                 .then((data) => {
                     sessionStorage.setItem("token", data.access_token);
+                    sessionStorage.setItem(
+                        "user",
+                        JSON.stringify({ email: email, password: password })
+                    );
                     setToken(data.access_token);
-                    setCurrentUser(email);
                 })
                 .catch(setToken(""));
         }
         setSubmitted(false);
     }, [isSubmitted]);
+
+    if (isError) {
+        return (
+            <Container>
+                <h1>Usuario no Valido</h1>
+                {setTimeout(() => {
+                    setError(false);
+                }, 2000)}
+            </Container>
+        );
+    }
 
     return (
         <Container>

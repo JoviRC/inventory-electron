@@ -5,7 +5,7 @@ import GetUserInfo from "../hooks/GetUserInfo";
 const Home = (props) => {
     return (
         <Container>
-            {/* <GetUserInfo {...props} /> */}
+            <GetUserInfo  {...props} />
         </Container>
     );
 };
