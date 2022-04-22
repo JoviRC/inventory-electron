@@ -3,36 +3,12 @@
         {
             "id": 1,
             "email": "asd",
-            "password": "asd",
-            "passauth": "asd",
-            "name": "asd",
-            "lastname": "asd",
-            "rut": 18986772,
-            "phone": "asd",
-            "address": "asd",
-            "admin": true,
-            "user": false,
-            "created_at": "2020-04-20T17:00:00.000Z",
-            "updated_at": "2020-04-20T17:00:00.000Z",
-            "deleted_at": null,
-            "user_status": "active"
+            "password": "asd"
         },
         {
             "id": 2,
             "email": "johan@gmail.com",
-            "password": "asd",
-            "passauth": "asd",
-            "name": "johan",
-            "lastname": "rivera",
-            "rut": 18986772,
-            "phone": "123",
-            "address": "mi casa",
-            "admin": false,
-            "user": true,
-            "created_at": "2020-04-20T17:00:00.000Z",
-            "updated_at": "2020-04-20T17:00:00.000Z",
-            "deleted_at": null,
-            "user_status": "active"
+            "password": "asd"
         },
         {
             "id": 3,

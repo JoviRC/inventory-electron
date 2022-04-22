@@ -20,33 +20,6 @@ const Login = ({ setToken }) => {
     const [isError, setError] = useState(false);
 
     useEffect(() => {
-        if (isSubmitted) {
-            const requestOptions = {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email: email, password: password }),
-            };
-            fetch(_HOST_URL_ + _RESOURCE_LOGIN_, requestOptions)
-                .catch(setError(true))
-                .then((response) => response.json())
-                .catch(setError(true))
-                .then((data) => {
-                    if (data.access_token !== undefined) {
-                        sessionStorage.setItem("token", data.access_token);
-                        sessionStorage.setItem(
-                            "user",
-                            JSON.stringify({ email: email, password: password })
-                        );
-                        setToken(data.access_token);
-                    }
-                })
-                .catch(setError(true));
-        }
-        setSubmitted(false);
-    }, [isSubmitted]);
-
-    function handleSubmitted(e) {
-        e.preventDefault();
         if (email.length === 0 && password.length === 0) {
             setBothEmpty(true);
         }
@@ -59,13 +32,104 @@ const Login = ({ setToken }) => {
         if (email.length > 0 && password.length > 0) {
             setSubmitted(true);
         }
-    }
+        if (isSubmitted) {
+            const requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: email, password: password }),
+            };
+            fetch(_HOST_URL_ + _RESOURCE_LOGIN_, requestOptions)
+                .then((response) => {
+                    if (response.status === 200) {
+                        setSuccess(true);
+                        console.log("Success");
+                        return response.json();
+                    } else {
+                        setError(true);
+                        console.log("Error: " + response.status);
+                        return response.json();
+                    }
+                })
+                .then((data) => {
+                    if (data.access_token !== undefined) {
+                        sessionStorage.setItem("token", data.access_token);
+                        sessionStorage.setItem(
+                            "user",
+                            JSON.stringify({ email: email, password: password })
+                        );
+                        setToken(data.access_token);
+                    }
+                });
+        }
+        setSubmitted(false);
+    }, [isSubmitted]);
 
     //
     //returns
     //
 
     if (isError) {
+        if (bouthEmpty) {
+            return (
+                <Container>
+                    <ContainerError>
+                        <TextError>Correo y contraseña estan vacias</TextError>
+                    </ContainerError>
+                    <ButtonSubmit
+                        onClick={() => {
+                            setError(false);
+                            setEmail("");
+                            setPassword("");
+                            setBothEmpty(false);
+                            setEmptyEmail(false);
+                            setEmptyPassword(false);
+                        }}
+                    >
+                        Regresar
+                    </ButtonSubmit>
+                </Container>
+            );
+        }
+
+        if (emptyEmail) {
+            return (
+                <Container>
+                    <ContainerError>
+                        <TextErrorEmail>Correo esta vacio</TextErrorEmail>
+                    </ContainerError>
+                    <ButtonSubmit
+                        onClick={() => {
+                            setError(false);
+                            setEmail("");
+                            setPassword("");
+                            setEmptyEmail(false);
+                        }}
+                    >
+                        Regresar
+                    </ButtonSubmit>
+                </Container>
+            );
+        }
+        if (emptyPassword) {
+            return (
+                <Container>
+                    <ContainerError>
+                        <TextErrorEmail>Ingrese una contraseña valida</TextErrorEmail>
+                    </ContainerError>
+                    <ButtonSubmit
+                        onClick={() => {
+                            setError(false);
+                            setEmail("");
+                            setPassword("");
+                            setEmptyPassword(false);
+                        }}
+                    >
+                        Regresar
+                    </ButtonSubmit>
+                </Container>
+            );
+        }
+
         return (
             <Container>
                 <ContainerError>

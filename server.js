@@ -32,6 +32,10 @@ function isAuthenticated({ email, password }) {
     );
 }
 
+router.get('/products', (req, res) => {
+        
+});
+
 // Register New User
 server.post("/auth/register", (req, res) => {
     console.log("register endpoint called; request body:");
@@ -91,7 +95,8 @@ server.post("/auth/login", (req, res) => {
     }
     const access_token = createToken({ email, password });
     console.log("Access Token:" + access_token);
-    res.status(200).json({ access_token });
+    const status = 200;
+    res.status(status).json({ status, access_token });
 });
 
 server.use(/^(?!\/auth).*$/, (req, res, next) => {

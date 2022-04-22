@@ -25,8 +25,6 @@ const Body = styled.div`
 
 const RouterApp = () => {
     const [token, setToken] = useState(sessionStorage.getItem("token"));
-    const [currentUser, setCurrentUser] = useState({});
-
     return (
         <MemoryRouter>
             <Body>
@@ -38,16 +36,8 @@ const RouterApp = () => {
                         <>
                             <Nav />
                             <Switch>
-                                <Route
-                                    exact
-                                    path="/"
-                                    component={() => <Home />}
-                                />
-                                <Route
-                                    exact
-                                    path="/about"
-                                    component={() => <About />}
-                                />
+                                <Route exact path="/" component={() => <Home />} />
+                                <Route exact path="/about" component={() => <About />} />
                             </Switch>
                         </>
                     )}
