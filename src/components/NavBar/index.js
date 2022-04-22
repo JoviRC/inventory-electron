@@ -9,6 +9,7 @@ const Nav = (props) => {
     function Close() {
         serConfirm(false);
         sessionStorage.removeItem("token");
+        sessionStorage.removeItem("user");
         window.location.reload();
     }
 

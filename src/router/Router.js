@@ -32,21 +32,21 @@ const RouterApp = () => {
             <Body>
                 <FrameBar />
                 <Container>
-                    {!token || token.length === 0 ? (
+                    {!token || token.length === 0 || token === undefined || token === null ? (
                         <Login setToken={setToken} />
                     ) : (
                         <>
-                            <Nav currentUser={currentUser} />
+                            <Nav />
                             <Switch>
                                 <Route
                                     exact
                                     path="/"
-                                    component={() => <Home currentUser={currentUser} />}
+                                    component={() => <Home />}
                                 />
                                 <Route
                                     exact
                                     path="/about"
-                                    component={() => <About currentUser={currentUser} />}
+                                    component={() => <About />}
                                 />
                             </Switch>
                         </>

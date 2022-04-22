@@ -1,60 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { _HOST_URL_, _RESOURCE_LOGIN_ } from "../../hooks/Auth_Hooks";
-import styled from "styled-components";
-
-const Input = styled.input`
-    width: 200px;
-    height: 30px;
-    margin: 8px;
-    padding: 8px;
-    border-radius: 5px;
-    border: none;
-    background-color: #f2f2f270;
-    color: #fff;
-    outline: none;
-    text-align: center;
-    &::placeholder {
-        color: #fff;
-    }
-    &:hover {
-        &::placeholder {
-            color: #ffffff80;
-        }
-    }
-`;
-const ButtonSubmit = styled.button`
-    width: auto;
-    height: auto;
-    border-radius: 15px;
-    border: 1px solid #ffffff80;
-    background-color: #202020;
-    margin: 8px;
-    padding: 8px 16px;
-    color: #fff;
-    font-size: 18px;
-    &:focus {
-        outline: none;
-    }
-    &:active {
-        background-color: #252525;
-    }
-`;
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: calc(100vh - 30px);
-    min-width: 800px;
-    outline: none;
-`;
+import {
+    Input,
+    ButtonSubmit,
+    Container,
+    ContainerError,
+    TextError,
+    TextErrorEmail,
+} from "./styled_index";
 
 const Login = ({ setToken }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [emptyEmail, setEmptyEmail] = useState(false);
+    const [emptyPassword, setEmptyPassword] = useState(false);
+    const [bouthEmpty, setBothEmpty] = useState(false);
     const [isSubmitted, setSubmitted] = useState(false);
-    const [isSusses, setSusses] = useState(false);
+    const [isSuccess, setSuccess] = useState(false);
     const [isError, setError] = useState(false);
 
     useEffect(() => {
@@ -67,35 +29,73 @@ const Login = ({ setToken }) => {
             fetch(_HOST_URL_ + _RESOURCE_LOGIN_, requestOptions)
                 .catch(setError(true))
                 .then((response) => response.json())
-                .catch(setToken(""))
+                .catch(setError(true))
                 .then((data) => {
-                    sessionStorage.setItem("token", data.access_token);
-                    sessionStorage.setItem(
-                        "user",
-                        JSON.stringify({ email: email, password: password })
-                    );
-                    setToken(data.access_token);
+                    if (data.access_token !== undefined) {
+                        sessionStorage.setItem("token", data.access_token);
+                        sessionStorage.setItem(
+                            "user",
+                            JSON.stringify({ email: email, password: password })
+                        );
+                        setToken(data.access_token);
+                    }
                 })
-                .catch(setToken(""));
+                .catch(setError(true));
         }
         setSubmitted(false);
     }, [isSubmitted]);
 
+    function handleSubmitted(e) {
+        e.preventDefault();
+        if (email.length === 0 && password.length === 0) {
+            setBothEmpty(true);
+        }
+        if (email.length === 0) {
+            setEmptyEmail(true);
+        }
+        if (password.length === 0) {
+            setEmptyPassword(true);
+        }
+        if (email.length > 0 && password.length > 0) {
+            setSubmitted(true);
+        }
+    }
+
+    //
+    //returns
+    //
+
     if (isError) {
         return (
             <Container>
-                <h1>Usuario no Valido</h1>
-                {setTimeout(() => {
-                    setError(false);
-                }, 2000)}
+                <ContainerError>
+                    <TextError>Usuario</TextError>
+                    <TextErrorEmail>{email}</TextErrorEmail>
+                    <TextError>no valido</TextError>
+                </ContainerError>
+                <ButtonSubmit
+                    onClick={() => {
+                        setError(false);
+                        setEmail("");
+                        setPassword("");
+                    }}
+                >
+                    Regresar
+                </ButtonSubmit>
             </Container>
         );
     }
 
     return (
         <Container>
-            <Input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
             <Input
+                required={true}
+                type="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+                required={true}
                 type="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
