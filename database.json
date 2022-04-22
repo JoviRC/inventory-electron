@@ -220,8 +220,8 @@
             "email": "asd",
             "password": "asd",
             "passauth": "asd",
-            "name": "asd",
-            "lastname": "asd",
+            "name": "Johan Alejandro",
+            "lastname": "Rivera Casanga",
             "rut": 18986772,
             "phone": "asd",
             "address": "asd",
@@ -229,7 +229,8 @@
             "created_at": "2020-04-20T17:00:00.000Z",
             "updated_at": "2020-04-20T17:00:00.000Z",
             "deleted_at": null,
-            "user_status": "active"
+            "user_status": "active",
+            "acount_status": true
         },
         {
             "id": 2,

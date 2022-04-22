@@ -3,12 +3,16 @@
         {
             "id": 1,
             "email": "asd",
-            "password": "asd"
+            "password": "asd",
+            "status": "active",
+            "validity": true,
         },
         {
             "id": 2,
             "email": "johan@gmail.com",
-            "password": "asd"
+            "password": "asd",
+            "status": "active",
+            "validity": true,
         },
         {
             "id": 3,
