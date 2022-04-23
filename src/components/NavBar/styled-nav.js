@@ -89,4 +89,69 @@ const Header = styled.div`
     height: auto;
 `;
 
-export { ContainerMain, ModalContent, LogOut, LogOutConfirm, Box, BoxLogOut, Header };
+const HeaderDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+`;
+
+const HeaderBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 80%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #ffffff40;
+    margin: 4px 0px;
+`;
+const HeaderIcon = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+`;
+const HeaderTextDiv = styled.div`
+    margin: 10px auto 10px auto;
+    height: 110px;
+    width: 40px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-y: scroll;
+    transform: rotate(-90deg);
+    
+    &::-webkit-scrollbar {
+        display: none;
+    }
+`;
+const HeaderText = styled.h1`
+    text-align: center;
+    font-size: 16px;
+    font-weight: lighter;
+    height: calc(width + 10px);
+    width: auto;
+    transform: rotate(90deg);
+    user-select: none;
+    
+`;
+
+export {
+    HeaderText,
+    HeaderTextDiv,
+    HeaderIcon,
+    HeaderBox,
+    HeaderDiv,
+    ContainerMain,
+    ModalContent,
+    LogOut,
+    LogOutConfirm,
+    Box,
+    BoxLogOut,
+    Header,
+};
