@@ -6,6 +6,7 @@ import {
     VscChromeClose,
     VscChromeRestore,
 } from "react-icons/vsc";
+import TitleBar from "./TitleBar.js";
 
 require("../../renderer.js");
 const Container = styled.div`
@@ -36,18 +37,19 @@ const Button = styled.div`
 const FrameBar = React.memo(() => {
     return (
         <Container>
-                <Button id="min-button">
-                    <VscChromeMinimize />
-                </Button>
-                <Button id="restore-button">
-                    <VscChromeRestore />
-                </Button>
-                <Button id="max-button">
-                    <VscChromeMaximize />
-                </Button>
-                <Button id="close-button">
-                    <VscChromeClose />
-                </Button>
+            <TitleBar />
+            <Button id="min-button">
+                <VscChromeMinimize />
+            </Button>
+            <Button id="restore-button">
+                <VscChromeRestore />
+            </Button>
+            <Button id="max-button">
+                <VscChromeMaximize />
+            </Button>
+            <Button id="close-button">
+                <VscChromeClose />
+            </Button>
         </Container>
     );
 });

@@ -1,10 +1,9 @@
 import React from "react";
 import NavLink from "./NavLink";
 import { HiOutlineLogout } from "react-icons/hi";
-import HeaderNav from "./HeaderNav";
 import { ContainerMain, ModalContent, LogOut, LogOutConfirm, Box, BoxLogOut } from "./styled-nav";
 
-const Nav = (props) => {
+const Nav = () => {
     const [confirm, serConfirm] = React.useState(false);
     function Close() {
         serConfirm(false);
@@ -12,6 +11,7 @@ const Nav = (props) => {
         sessionStorage.removeItem("user");
         window.location.reload();
     }
+
 
     if (confirm) {
         return (
@@ -26,7 +26,6 @@ const Nav = (props) => {
     return (
         <>
             <ContainerMain>
-                <HeaderNav {...props} />
                 <Box>
                     <NavLink to="/" name="Inicio" />
                     <NavLink to="/about" name="About" />

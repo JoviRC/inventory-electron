@@ -108,37 +108,42 @@ const HeaderBox = styled.div`
     border-radius: 10px;
     background-color: #ffffff40;
     margin: 4px 0px;
+    transform: translateX(0px);
+    overflow: hidden;
 `;
 const HeaderIcon = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 40px;
+    width: 50px;
     height: 40px;
+    background-color: #ffffff40;
+    border-radius: 10px;
+    z-index: 2;
 `;
 const HeaderTextDiv = styled.div`
-    margin: 10px auto 10px auto;
-    height: 110px;
-    width: 40px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow-y: scroll;
-    transform: rotate(-90deg);
-    
-    &::-webkit-scrollbar {
-        display: none;
-    }
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 40px;
+    width: calc(100% - 40px);
+    overflow: hidden;
+    padding: 0px 10px;
+    transition: justify-content 0.3s ease-in-out;
+
 `;
 const HeaderText = styled.h1`
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     text-align: center;
     font-size: 16px;
     font-weight: lighter;
-    height: calc(width + 10px);
+    height: auto;
     width: auto;
-    transform: rotate(90deg);
     user-select: none;
-    
 `;
 
 export {

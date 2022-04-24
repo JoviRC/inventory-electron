@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 const Titule = styled.h1`
     margin: auto;
     padding-left: 150px;
@@ -10,8 +9,9 @@ const Titule = styled.h1`
     -webkit-app-region: drag;
     color: #fff;
 `;
-const TitleBar = (props) => {
-    return <Titule>{props.children}</Titule>;
+
+const TitleBar = () => {
+    return <Titule>Laboratorio Hospital de Ovalle</Titule>;
 };
 
 export default TitleBar;

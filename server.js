@@ -6,10 +6,12 @@ const jwt = require("jsonwebtoken");
 const server = jsonServer.create();
 const router = jsonServer.router("./database.json");
 const userdb = JSON.parse(fs.readFileSync("./users.json", "UTF-8"));
+const middlewares  = jsonServer.defaults();
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
-server.use(jsonServer.defaults());
+// server.use(jsonServer.defaults());
+server.use(middlewares);
 
 const SECRET_KEY = "123456789";
 
@@ -32,9 +34,6 @@ function isAuthenticated({ email, password }) {
     );
 }
 
-router.get('/products', (req, res) => {
-        
-});
 
 // Register New User
 server.post("/auth/register", (req, res) => {

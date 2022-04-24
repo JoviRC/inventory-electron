@@ -8,6 +8,8 @@ import {
     TextError,
     TextErrorEmail,
 } from "./styled_index";
+import { jwt_decode } from "jwt-decode";
+const axios = require("axios").default;
 
 const Login = ({ setToken }) => {
     const [email, setEmail] = useState("");
@@ -41,8 +43,6 @@ const Login = ({ setToken }) => {
             fetch(_HOST_URL_ + _RESOURCE_LOGIN_, requestOptions)
                 .then((response) => {
                     if (response.status === 200) {
-                        setSuccess(true);
-                        console.log("Success");
                         return response.json();
                     } else {
                         setError(true);
@@ -53,17 +53,12 @@ const Login = ({ setToken }) => {
                 .then((data) => {
                     if (data.access_token !== undefined) {
                         sessionStorage.setItem("token", data.access_token);
-                        sessionStorage.setItem(
-                            "user",
-                            JSON.stringify({ email: email, password: password })
-                        );
-                        setToken(data.access_token);
+                        setToken(sessionStorage.getItem("token"));
                     }
                 });
         }
         setSubmitted(false);
     }, [isSubmitted]);
-
     //
     //returns
     //
